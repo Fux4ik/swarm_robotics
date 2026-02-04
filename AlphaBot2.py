@@ -10,8 +10,8 @@ class AlphaBot2(object):
 		self.BIN2 = bin2
 		self.ENA = ena
 		self.ENB = enb
-		self.PA  = 50
-		self.PB  = 50
+		self.PA  = 1
+		self.PB  = 1
 
 		GPIO.setmode(GPIO.BCM)
 		GPIO.setwarnings(False)
