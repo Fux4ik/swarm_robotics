@@ -32,18 +32,18 @@ def handle_track(cmd):
     if robot_angle is None:
         move(SPEED, SPEED)  # no angle info — just go forward
         return
-    robot_angle_front = robot_angle + math.pi
     target_angle = math.atan2(ty - cy, tx - cx)
     diff = math.degrees((target_angle - robot_angle + math.pi) % (2 * math.pi) - math.pi)
 
     if abs(diff) < ANGLE_THRESH:
-        move(SPEED, SPEED)      # forward
+        correction = int(diff / ANGLE_THRESH * 5)
+        move(SPEED + correction, SPEED - correction)      # forward
         print(f"FORWARD  diff={diff:+.1f}° dist={dist:.0f}px")
     elif diff > 0:
-        move(-TURN_SPEED, TURN_SPEED)   # turn right
+        move(TURN_SPEED, -TURN_SPEED)   # turn right
         print(f"RIGHT    diff={diff:+.1f}° dist={dist:.0f}px")
     else:
-        move(+TURN_SPEED, -TURN_SPEED)   # turn left
+        move(-TURN_SPEED, TURN_SPEED)   # turn left
         print(f"LEFT     diff={diff:+.1f}° dist={dist:.0f}px")
 
 def run():
