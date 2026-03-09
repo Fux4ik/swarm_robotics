@@ -8,7 +8,7 @@ HOST         = '0.0.0.0'
 PORT         = 5000
 SPEED        = 15
 TURN_SPEED   = 10
-ANGLE_THRESH = 15
+ANGLE_THRESH = 25
 DIST_THRESH  = 25
 
 bot = AlphaBot2()
